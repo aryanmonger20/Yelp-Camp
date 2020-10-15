@@ -1,5 +1,6 @@
 var express =require("express")
 var router=express.Router();
+var Campground=require("../models/campgrounds")
 
 
 //INDEX ROUTE 
@@ -61,4 +62,4 @@ router.get("/campgrounds", function(req,res) {
       
       
     })
-    module.export=router;
+    module.exports = router;

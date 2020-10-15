@@ -10,8 +10,13 @@ var User =require("./models/user")
 var Campground=require("./models/campgrounds");
 var seedDB = require("./seeds");
 var Comment=require("./models/comment")
+
+var indexRoutes= require("./routes/index")
  var commentRoutes=require("./routes/comments")
- var campgroundRoutes=require("./routes/campgrounds ")
+ var campgroundRoutes=require("./routes/campgrounds")
+
+
+
  seedDB();
 mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true,
 useUnifiedTopology: true,
@@ -42,6 +47,10 @@ app.use(function(req,res,next){
   res.locals.currentUser=req.user;
   next();
 })
+app.use(indexRoutes);
+app.use(campgroundRoutes)
+app.use(commentRoutes);
+
 
 app.listen(port, () => {
     console.log(`Server has started at:${port}`)
