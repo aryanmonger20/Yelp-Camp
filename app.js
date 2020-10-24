@@ -11,18 +11,20 @@ var Campground=require("./models/campgrounds");
 var seedDB = require("./seeds");
 var Comment=require("./models/comment")
 
+var methodOverride=require("method-override")
 var indexRoutes= require("./routes/index")
  var commentRoutes=require("./routes/comments")
  var campgroundRoutes=require("./routes/campgrounds")
 
 
 
- seedDB();
+ //seedDB();
 mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true,
 useUnifiedTopology: true,
 useCreateIndex: true,
 useFindAndModify: true})
 
+app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"))
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine","ejs");
