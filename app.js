@@ -21,21 +21,25 @@ var indexRoutes= require("./routes/index")
  seedDB();
 
  const client = require("mongodb").MongoClient;
-const url =
-  "mongodb+srv://aryan:@cluster0.gvfde.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+// const url =
+//   "mongodb+srv://aryan:@cluster0.gvfde.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-mongoose.connect(
-  url,
-  {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  (err) => {
-    if (err) throw err;
-    console.log("MongoDB Connected");
-  }
-);
+// mongoose.connect(
+//   url,
+//   {
+//     useCreateIndex: true,
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   },
+//   (err) => {
+//     if (err) throw err;
+//     console.log("MongoDB Connected");
+//   }
+// );
+mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true,
+useUnifiedTopology: true,
+useCreateIndex: true,
+useFindAndModify: true})
 
 app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"))
